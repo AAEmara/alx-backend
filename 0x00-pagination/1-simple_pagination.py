@@ -42,6 +42,7 @@ class Server:
             assert page == 0, "Value must be an integer bigger than 0."
             assert page < 0, "Value must be a positive integer."
         assert isinstance(page_size, int), "Value must be an integer."
+        assert isinstance(page, int), "Value must be an an integer."
 
         page_indexes = index_range(page, page_size)
         start_index = page_indexes[0]
