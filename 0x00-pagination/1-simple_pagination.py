@@ -46,8 +46,12 @@ class Server:
         page_indexes = index_range(page, page_size)
         start_index = page_indexes[0]
         end_index = page_indexes[1]
+        dataset = self.dataset()
 
-        return (self.dataset()[start_index: end_index])
+        if (end_index > len(dataset)):
+            return ([])
+
+        return (dataset[start_index: end_index])
 
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
