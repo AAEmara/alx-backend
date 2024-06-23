@@ -49,7 +49,7 @@ class Server:
         end_index = page_indexes[1]
         dataset = self.dataset()
 
-        if (end_index > len(dataset)):
+        if ((end_index > len(dataset)) or (start_index > len(dataset))):
             return ([])
 
         return (dataset[start_index: end_index])
