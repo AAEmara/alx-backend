@@ -38,11 +38,14 @@ class Server:
         Returns:
             A list that contains a list of data.
         """
-        if (page <= 0):
-            assert page == 0, "Value must be an integer bigger than 0."
-            assert page < 0, "Value must be a positive integer."
-        assert isinstance(page_size, int), "Value must be an integer."
         assert isinstance(page, int), "Value must be an an integer."
+        assert isinstance(page_size, int), "Value must be an integer."
+
+        if (page <= 0 or page_size <= 0):
+            assert page == 0, "Value must be an integer bigger than 0."
+            assert page_size == 0, "Value must be an integer bigger than 0."
+            assert page < 0, "Value must be a positive integer."
+            assert page_size < 0, "Value must be a positive integer."
 
         page_indexes = index_range(page, page_size)
         start_index = page_indexes[0]
