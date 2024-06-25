@@ -51,7 +51,6 @@ class Server:
         """
         indexed_dataset = self.indexed_dataset()
         indexes = list(indexed_dataset)
-        # print(index)
 
         assert (index is not None), "Index must be a positive number."
         assert (index >= 0), "Index must be a positive number."
@@ -60,25 +59,21 @@ class Server:
         assert isinstance(index, int), "Values must be of an integer type."
         assert isinstance(page_size, int), "Values must be of an integer type."
 
-        current_page = math.ceil(index / page_size)
-        first_index = (page_size * (current_page - 1))  # Last Index in page.
-        last_index = ((current_page * page_size) - 1)  # First Index in page.
-        indexes_range = range(last_index)
-
         count = 0
-        j = indexes[index]
-        current_index = j
         data = list()
-
-        for i in indexes[index:]:
-            if (count < page_size):
-                data.append(indexed_dataset[indexes[index + count]])
+        for i, value in indexed_dataset.items():
+            if (i >= index and count < page_size):
+                data.append(value)
                 count += 1
-        current_index = indexes[index + count]
+                continue
+            if (count == page_size):
+                current_index = i
+                break
+
         hypermedia_data = {
             "index": index,
             "data": data,
-            "page_size": page_size,
+            "page_size": len(data),
             "next_index": current_index,
         }
 
