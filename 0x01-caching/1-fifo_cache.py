@@ -26,10 +26,9 @@ class FIFOCache(BaseCaching):
 
         item_count = len(list(self.cache_data))
         if (item_count > BaseCaching.MAX_ITEMS):
-            # discarded_key = self.cache_data.pop(key, None)
-            key = list(self.cache_data)[0]
-            del self.cache_data[key]
-            print(f"DISCARD: {key}")
+            discarded_key = list(self.cache_data)[0]  # Applying FIFO.
+            del self.cache_data[discarded_key]
+            print(f"DISCARD: {discarded_key}")
 
     def get(self, key):
         """Retrieves the cached data from memory according to a certain key.
