@@ -20,7 +20,7 @@ class FIFOCache(BaseCaching):
             The method add the item if there is an available space in the
             memory, but it removes it once there is not enough space.
         """
-        if (key is not None):
+        if (key is not None and item is not None):
             self.cache_data[key] = item
 
         item_count = len(list(self.cache_data))
