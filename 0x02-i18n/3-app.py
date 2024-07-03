@@ -30,8 +30,8 @@ def get_locale():
 def home():
     """Gets the Home Page.
     """
-    home_title = gettext(u'Welcome to Holberton')
-    home_header = gettext(u'Hello world!')
+    home_title: str = gettext(u'Welcome to Holberton')
+    home_header: str = gettext(u'Hello world!')
     return render_template("3-index.html",
                            home_title=home_title,
                            home_header=home_header)
