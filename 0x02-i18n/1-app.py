@@ -15,6 +15,7 @@ class Config:
     LANGUAGES: List[str] = ["en", "fr"]
 
 
+app.config.from_object(Config)
 babel = Babel(app)
 
 
