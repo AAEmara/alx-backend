@@ -3,6 +3,7 @@
 
 from flask import Flask, render_template, request
 from flask_babel import Babel
+from typing import List
 
 
 app = Flask(__name__)
@@ -11,7 +12,7 @@ app = Flask(__name__)
 class Config:
     """Defines the supported languages for translation.
     """
-    LANGUAGES = ["en", "fr"]
+    LANGUAGES: List[str] = ["en", "fr"]
 
 
 babel = Babel(app)
@@ -32,4 +33,4 @@ def home():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
