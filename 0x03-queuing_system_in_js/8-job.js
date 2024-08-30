@@ -4,10 +4,11 @@ export default function createPushNotificationsJobs(jobs, queue) {
   }
 
   for (const jobData of jobs) {
-    const job = queue.create('push_notification_code_3', jobData)
-      .save( (err) => {
-        if ( !err ) {
-          console.log(`Notification job created: ${job.id}`);
+    const job = queue.create('push_notification_code_3', jobData);
+
+    job.save( (err) => {
+      if ( !err ) {
+        console.log(`Notification job created: ${job.id}`);
         }
       });
 
